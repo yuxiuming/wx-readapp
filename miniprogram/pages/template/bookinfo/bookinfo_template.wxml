@@ -1,0 +1,25 @@
+<template name="bookinfoTemplate">
+  <view class="image_panel">
+    <image src="{{editbook.image}}" class="book-img"></image>
+    <image src="/images/loveit.png" class="book-loveimg" wx:if="{{editbook.loveit}}" catchtap='onLoveThisBookTap' data-islove="{{false}}"></image>
+    <image src="/images/love.png" class="book-loveimg" wx:else catchtap='onLoveThisBookTap' data-islove="{{true}}"></image>
+  </view>
+
+  <view class='book-dec-container'>
+    <view class="book-title-panel">
+      <text class="book-title">{{editbook.title}}</text>
+      <view class="book-rating-panel">
+        <text class="book-rating-ave">{{editbook.rating_average}}</text>
+      </view>
+    </view>
+    <view class='book_info_panel'>
+      <text>副标题:{{editbook.subtitle}}</text>
+      <text>作者:{{editbook.author}}</text>
+      <text>译者:{{editbook.translator}}</text>
+      <text>{{editbook.publisher}} / {{editbook.pubdate}}</text>
+      <text>页数:{{editbook.pages}}</text>
+      <text>ISBN(13):{{editbook.isbn13}}</text>
+      <text>ISBN(10):{{editbook.isbn10}}</text>
+    </view>
+  </view>
+</template>

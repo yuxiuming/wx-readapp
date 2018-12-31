@@ -1,0 +1,36 @@
+<import src="../template/urbook/urbook_template.wxml" />
+
+<view class='ub_container'>
+  <view class='ub_status_panel'>
+    <view class='ub_status_item' data-status='0' catchtap='onStatusTap'>
+      <text style='color:{{colorSt0}}'>想读</text>
+    </view>
+    <view class='ub_status_item' data-status='1' catchtap='onStatusTap'>
+      <text style='color:{{colorSt1}}'>在读</text>
+    </view>
+    <view class='ub_status_item' data-status='2' catchtap='onStatusTap'>
+      <text style='color:{{colorSt2}}'>读过</text>
+    </view>
+    <view class='ub_status_item' data-status='3' catchtap='onStatusTap'>
+      <text style='color:{{colorSt3}}'>弃读</text>
+    </view>
+  </view>
+  <view class="ub_book_tips"><text>{{ubbooktips}}</text></view>
+  <view class="ub_books_container" >
+    <block wx:for="{{userxbooks}}" wx:for-item="userxbook">
+      <view class='ub_time_point_panel'>
+        <view class='ub_time_point'></view>
+        <text>{{userxbook.timestr}}</text>
+      </view>
+      <view class="ub_books_panel">
+        <block wx:for="{{userxbook.books}}" wx:for-item="book">
+          <view class='ub_book_item'>
+            <view class='ub_time-vertical'></view>
+            <template is="urbookTemplate" data="{{book}}" />
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+
+</view>

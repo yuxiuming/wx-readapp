@@ -1,0 +1,156 @@
+<import src="../template/bookinfo/bookinfo_template.wxml" />
+<import src="../template/tag/tag_template.wxml" />
+<import src="../template/note/note_template.wxml" />
+<import src="../template/div/div_template.wxml" />
+<view class="bd_container">
+  <view class='book_info_container'>
+    <template is="bookinfoTemplate" data="{{editbook}}" />
+  </view>
+  <!--内容简介的容器-->
+  <view class='fold_panel'>
+     <template is="divTemplate" data="{{...booksummfold}}" />
+    <text class='booksumm_content' wx:if="{{isBookSummShow}}">{{booksummary}}</text>
+    <view class='line' wx:if="{{isBookSummShow}}"></view>
+  </view>
+  <!--书本印象的容器-->
+  <view class="fold_panel">
+    <template is="divTemplate" data="{{...bookimpressfold}}" />
+    <view>
+      <text>{{userinfoTip}}</text>
+    </view>
+    <view class='edit_icon_panel' catchtap='onUserRBookInfoEdit' wx:if="{{isshowtype}}">
+      <image class='edit_icon' src="/images/edit.png" />
+      <text>编辑</text>
+    </view>
+    <!--书本印象的展示-->
+    <view class='bd_userinfo_show_container' wx:if="{{isshowtype}}">
+      <view class='bd_read_status'>
+        <text>我</text>
+        <text class='read_status_txt_2'>{{readstatus}}</text>
+        <text>这本书</text>
+        <text>{{readotherinfo}}</text>
+      </view>
+      <view class='bd_tags'>
+        <text>我觉得这本书是：</text>
+        <view class="tags_panel">
+          <block wx:for="{{dbtags}}" wx:for-item="tag">
+            <view class="tag_item">
+              <text>{{tag}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <view class='line'></view>
+    </view>
+    <!--书本印象的编辑-->
+    <view class='bd_userinfo_edit_container' wx:if="{{isedittype}}">
+      <form bindsubmit='onBookAddSubmit'>
+        <text class='status_txt'>对于这本书，我：</text>
+        <radio-group name="readStatus" class='read_status_container' catchchange='onReadStatusChg'>
+          <label>
+            <radio value="0" checked="{{readStatus0}}" />想读</label>
+          <label>
+            <radio value="1" checked="{{readStatus1}}" />正在读</label>
+          <label>
+            <radio value="2" checked="{{readStatus2}}" />读过</label>
+          <label>
+            <radio value="3" checked="{{readStatus3}}" />弃读</label>
+        </radio-group>
+        <view class='readStatus_info'>
+          <view class='tagname_input_container' wx:if="{{isShowDatePicker}}">
+            <picker mode="date" fields="month" name="date" value="{{date}}" start="1900-01-01" end="2110-12-01" catchchange="onDateChange">
+              <text>{{datedesc}}</text>
+            </picker>
+          </view>
+          <view class='tagname_input_container ' wx:if="{{isShowNumInput}}">
+            <input class="hasReadNum_input" name="hasReadNum" placeholder="请输入已读页数" type="number" value="{{hasReadNum_value}}" placeholder-class='tagname_input_text ' bindblur='onAddHasReadNum'></input>
+          </view>
+        </view>
+        <view class='edittag_tip'>
+          <text>我觉得这本书是：</text>
+        </view>
+
+        <view class=' editbook_tags '>
+          <block wx:for="{{tags}}" wx:for-item="tag">
+            <template is="tagTemplate" data="{{tag}}" />
+          </block>
+          <view class='tag_item ' catchtap='onCustomTagTap'>
+            <text class='custom_tag '>自定义标签</text>
+            <image src="/images/cancel.png" wx:if="{{isShowCustomTagInput}}"></image>
+          </view>
+        </view>
+        <view class='tagname_input_container ' wx:if="{{isShowCustomTagInput}}">
+          <input class="tagname_input" name="tagName" placeholder="请输入10个字符以内的标签" value="{{tagname_value}}" placeholder-class='tagname_input_text ' bindblur='onAddCustomTag'></input>
+        </view>
+        <view class='bd_bnts_panel'>
+          <button class="bd_bnt" form-type="submit">保存书本印象</button>
+          <button class="bd_bnt" catchtap='onCancelBookAddTap'>取消</button>
+        </view>
+      </form>
+      <view class='line'></view>
+    </view>
+  </view>
+
+  <!--我的读书小记的容器-->
+  <view class='fold_panel'>
+    <template is="divTemplate" data="{{...mynotesfold}}" />
+    <view class="bd_note_sym" catchtap='onAddNewNoteTap' wx:if="{{isNoteShowType}}">
+      <image src="/images/add.png"></image>
+      <text>添加</text>
+    </view>
+    <view class='bd_note_container' wx:if="{{isNoteShowType}}">
+      <text class="bd_note_title">{{notetitle}}</text>
+      <block wx:if="{{pagenotes}}" wx:for="{{pagenotes}}" wx:for-item="pagenote">
+        <view class='bd_note_page_panel'>
+          <view class='bd_page_point'></view>
+          <text>第{{pagenote.pagenum}}页</text>
+        </view>
+
+        <block wx:for="{{pagenote.notes}}" wx:for-item="note">
+          <view class='bd_notes_show_panel'>
+            <view class='bd-page-vertical'></view>
+            <template is="noteTemplate" data="{{note}}" />
+          </view>
+        </block>
+      </block>
+      <view class='line'></view>
+    </view>
+
+    <form bindsubmit='onBookNoteAddSubmit' wx:if="{{isNoteEditType}}">
+      <text>编辑读书小记:</text>
+      <input class="bd_pagenum_input" name="pagenum" placeholder="当前要做小记的页数" type="number" value="{{pagenum}}" placeholder-class='bd_pagenum_input_text '></input>
+      <textarea class="bd_notecnt_input" name="notecnt" value="{{notecnt}}" placeholder="读书小记写这里。最多300个字符哦。" maxlength="500" />
+      <view class='bd_bnts_panel'>
+        <button class="bd_bnt" form-type="submit">保存读书记录</button>
+        <button class="bd_bnt" catchtap='onEditNoteCancel'>取消</button>
+      </view>
+      <view class='line'></view>
+    </form>
+  </view>
+
+
+  <!--其他用户的读书小记的容器-->
+  <view class='fold_panel'>
+    <template is="divTemplate" data="{{...othernotesfold}}" />
+
+    <view class='bd_note_container' wx:if="{{isOtherNoteShow}}">
+      <text class="bd_note_title">{{othernotetitle}}</text>
+      <block wx:if="{{otherpagenotes}}" wx:for="{{otherpagenotes}}" wx:for-item="pagenote">
+        <view class='bd_note_page_panel'>
+          <view class='bd_page_point'></view>
+          <text>第{{pagenote.pagenum}}页</text>
+        </view>
+
+        <block wx:for="{{pagenote.notes}}" wx:for-item="note">
+          <view class='bd_notes_show_panel'>
+            <view class='bd-page-vertical'></view>
+            <template is="noteTemplate" data="{{note}}" />
+          </view>
+        </block>
+      </block>
+      <view class='line'></view>
+    </view>
+  </view>
+  
+</view>

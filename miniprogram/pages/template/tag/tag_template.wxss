@@ -1,0 +1,18 @@
+.tag_item{
+  border: solid 1px #BEEBEB;
+  border-radius: 10rpx;
+  background-color:  #BEEBEB;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+.tag_item image{
+  margin-left: 10rpx;
+  height: 35rpx;
+  width: 30rpx;
+}
+.tag_item text{
+  font-size: 35rpx;
+}

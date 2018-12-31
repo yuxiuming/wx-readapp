@@ -1,0 +1,25 @@
+<import src="../template/book/book_template.wxml" />
+<view class="bookadd_page">
+  <!-- 书名搜索表单-->
+  <view class='bookadd_form_container' wx:if="{{true}}">
+
+    <form class="bookadd_form" bindsubmit='onBookSearchSubmit'>
+      <view class='search_input'>
+        <icon type="search" size='24' color='#405f80' class="search-img"></icon>
+        <input class="bookname_input" name="bookname" placeholder="请输入书名" value="{{bookname_value}}" placeholder-class='bookname_input_text' catchconfirm='onBookSearchSubmit' bindinput='onInputChange'></input>
+        <icon type="cancel" size='35' color='#405f80' class="cancel-img" wx:if="{{iscleariconshow}}" catchtap='onClearTap'></icon>
+      </view>
+
+    </form>
+  </view>
+
+  <view class='books_items'>
+    <text class='books_resulttip'>{{resultTip}}</text>
+    <view class='books_panel' wx:if="{{isShowSearchResult}}">
+      <block wx:for="{{books}}" wx:for-item="book">
+        <template is="bookTemplate" data="{{book}}" />
+      </block>
+    </view>
+  </view>
+
+</view>

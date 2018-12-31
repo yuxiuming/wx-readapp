@@ -1,0 +1,15 @@
+
+.div_panel{
+  display: flex;
+  flex-direction: row;
+}
+.div_txt{
+  color: #1eebeb;
+  font-size: 40rpx;
+  margin-right: 10rpx;
+}
+
+.div_icon image{
+  width: 50rpx;
+  height: 50rpx;
+}

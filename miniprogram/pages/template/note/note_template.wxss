@@ -1,0 +1,82 @@
+.note_item_panel {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  border: 1rpx #beebeb solid;
+  border-radius: 15rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  padding: 10rpx;
+  position: relative;
+}
+.note_info_panel{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.user_head{
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
+}
+.user_nickname{
+  font-size: 25rpx;
+  margin-right: 10rpx;
+}
+.note_time {
+  font-size: 25rpx;
+  color: gray;
+}
+
+.note_cnt {
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  margin-bottom: 60rpx;
+}
+
+
+
+.note_edit_delete,.note_like_panel{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 10rpx;
+  right: 20rpx;  
+}
+
+.note_delete {
+  margin-left: 50rpx;
+}
+
+.note_edit text { 
+  font-size: 25rpx;
+  color: gray;
+}
+
+.note_delete text {
+  font-size: 25rpx;
+  color: gray;
+}
+
+.note_edit image {
+  height: 30rpx;
+  width: 25rpx;
+}
+
+.note_delete image {
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.note_like text{
+  font-size: 30rpx;
+  color:#1eebeb;
+  margin-right: 5rpx;
+}
+
+.note_like image{
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 5rpx;
+}

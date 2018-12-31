@@ -1,0 +1,46 @@
+<import src="../tag/tag_template.wxml" />
+
+<template name="editbookTemplate">
+  <view class="bd_container">
+    <view class='bd_title_container'>
+      <text>{{editbook.title}}</text>
+      <text>{{editbook.rating_average}}</text>
+    </view>
+    <view class='bd_info_container'>
+      <image class='bd_img' src="{{editbook.image}}"></image>
+      <view class='db_info'>
+        <text>副标题:{{editbook.subtitle}}</text>
+        <text>作者:{{editbook.author}}</text>
+        <text>译者:{{editbook.translator}}</text>
+        <text>出版社:{{editbook.publisher}}</text>
+        <text>出版时间:{{editbook.pubdate}}</text>
+        <text>页数:{{editbook.pages}}</text>
+        <text>ISBN(13):{{editbook.isbn13}}</text>
+        <text>ISBN(10):{{editbook.isbn10}}</text>
+      </view>
+    </view>
+    <view class='db_user_info_container'>
+      <form>
+
+        <radio-group name="read_status" class='read_status_container'>
+          <label>
+            <radio value="0" />想读</label>
+          <label>
+            <radio value="1" />正在读</label>
+          <label>
+            <radio value="2" />读过</label>
+          <label>
+            <radio value="3" />弃读</label>
+        </radio-group>
+
+        <view class='editbook_tags'>
+          <block wx:for="{{tags}}" wx:for-item="tag">
+            <template is="tagTemplate" data="{{tag}}" />
+          </block>
+        </view>
+      </form>
+    </view>
+
+
+  </view>
+</template>

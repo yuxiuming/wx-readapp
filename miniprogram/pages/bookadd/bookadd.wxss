@@ -1,0 +1,62 @@
+/* miniprogram/pages/bookadd/bookadd.wxss */
+@import "../template/book/book_template.wxss";
+
+.bookadd_form_container {
+  width: 100%;
+}
+
+.search_input {
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  background-color: paleturquoise;
+  margin: 20rpx;
+  border: solid 1px paleturquoise;
+  border-radius: 25rpx;
+}
+
+.search-img{
+  margin-top: 25rpx;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+}
+.cancel-img{
+  margin-top: 15rpx;
+  margin-right: 10rpx;
+}
+
+.search_input input {
+  height: 100%;
+  width: 80%;
+}
+
+.bookname_input_text {
+  font-size: 50rpx;
+}
+
+.search_bnts {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+}
+
+.bookadd_bnt {
+  margin-left: 20rpx;
+  margin-right: 10rpx;
+  width: 50%;
+}
+
+.bookadd_cancel {
+  margin-left: 10rpx;
+  margin-right: 20rpx;
+  width: 50%;
+}
+
+.books_items {
+  margin-top: 20rpx;
+}
+
+.books_resulttip {
+  margin: 20rpx;
+}
+
