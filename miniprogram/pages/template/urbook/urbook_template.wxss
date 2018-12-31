@@ -1,0 +1,62 @@
+.urbook-container{
+  display: flex;
+  flex-direction: row;
+  background-color:#BEEBEB;
+  border: solid 1px #BEEBEB;
+  border-radius: 15rpx;
+  box-shadow: 8rpx 8rpx 4rpx grey;
+  opacity: 0.7;
+  margin: 15rpx;
+  padding: 15rpx;
+  width: 600rpx;
+  position: relative;
+}
+.love-img{
+position: absolute;
+bottom: 20rpx;
+right: 20rpx;
+width: 55rpx;
+height: 45rpx;
+z-index: 100;
+opacity: 0.7
+
+}
+.book-img{
+  height: 150rpx;
+  width: 120rpx;
+}
+.book-dec-container{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+}
+.book-title-panel{
+  display: flex;
+  flex-direction: row;
+}
+.book_info_panel{
+  display: flex;
+  flex-direction: column;
+}
+
+.book_info_panel text{
+  font-size: 20rpx;
+}
+
+.book-title{
+  font-size: 30rpx;
+  padding-right: 10rpx;
+}
+
+.book-rating-ave{
+  font-size: 30rpx;
+  color: red;
+}
+.book-rating-panel{
+  background-color: yellow;
+  border-radius: 1rpx;
+}
+
+.book_add_icon{
+  background-color: green;
+}

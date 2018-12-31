@@ -1,0 +1,27 @@
+<template name="noteTemplate">
+  <view class="note_item_panel">
+    <view class='note_info_panel'>
+      <image class="user_head" src="{{note.user.avatarUrl}}" wx:if="{{note.user.avatarUrl}}"></image>
+      <text class='user_nickname'>{{note.user.nickName}}</text>
+      <text class="note_time">{{note.modifytime}}</text>
+    </view>
+    <text class="note_cnt">{{note.notecnt}}</text>
+    <view class="note_edit_delete" wx:if="{{note.editable}}">
+      <view class="note_edit" data-note="{{note}}" catchtap='onEditNoteTap'>
+        <image src="/images/edit.png"></image>
+        <text>编辑</text>
+      </view>
+      <view class="note_delete" data-note="{{note}}" catchtap='onDelNoteTap'>
+        <image src="/images/cancel.png"></image>
+        <text>删除</text>
+      </view>
+    </view>
+    <view class="note_like_panel" wx:else>
+      <view class="note_like" data-note="{{note}}" catchtap='onLikeNoteTap'>
+        <text>喜欢</text>
+        <image src="/images/like.png"></image>
+        <text>({{note.likecount}})</text>
+      </view>
+    </view>
+  </view>
+</template>

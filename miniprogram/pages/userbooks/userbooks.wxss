@@ -1,0 +1,89 @@
+/* miniprogram/pages/userbooks/userbooks.wxss */
+@import "../template/urbook/urbook_template.wxss";
+
+.ub_container{
+  display: flex;
+  flex-direction: column;
+}
+.ub_status_panel{
+padding: 20rpx;
+display: flex;
+flex-direction: row;
+background-color:#BEEBEB;
+position: fixed;
+top:0;
+width: 100%;
+z-index: 100;
+}
+
+.ub_status_item{
+  background-color:white;
+  border: solid 1px #BEEBEB;
+  border-radius: 15rpx;
+  margin-right: 5rpx;
+  margin-left: 5rpx;
+  height: 80rpx;
+  width: 22%;
+  text-align: center;
+  padding-top:10rpx;
+}
+
+.ub_status_item text{
+  font-size: 50rpx;
+  color: grey;
+}
+
+.ub_book_tips{
+  margin-top: 20rpx;
+  margin-left: 35rpx;
+  position: absolute;
+  top:130rpx;
+}
+.ub_book_tips text{
+  font-size: 40rpx;
+  color: #4D9EB3;
+}
+.ub_books_container{
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top:190rpx;
+}
+
+
+.ub_time_point_panel{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ub_time_point{
+  width: 40rpx;
+  height: 40rpx;
+  background-color: white;
+  border: 15rpx #beebeb solid;
+  border-radius: 40rpx;
+  margin-right: 10rpx;
+}
+
+.ub_books_panel{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.ub_book_item{
+  display: flex;
+  flex-direction: row;
+  height: 210rpx;
+}
+.ub_time-vertical{
+  height: 100%;
+  width: 5rpx;
+  border: 1rpx #beebeb solid;
+  background-color:  #beebeb;
+  margin-left: 28rpx;
+}
+

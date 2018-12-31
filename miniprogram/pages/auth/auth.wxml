@@ -1,0 +1,13 @@
+<view class='auth_container'>
+<open-data type="userAvatarUrl" class='head_image'></open-data>
+<open-data type="userNickName" class='userNickName'></open-data>
+<!-- 需要使用 button 来授权登录 -->
+<button class='auth_bnt'
+  wx:if="{{canIUse}}"
+  open-type="getUserInfo"
+  bindgetuserinfo="bindGetUserInfo"
+>
+  点击授权登录使用小程序^-^
+</button>
+<view wx:else>请升级微信版本</view>
+</view>

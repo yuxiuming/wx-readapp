@@ -1,0 +1,9 @@
+    <template name="divTemplate">
+    <view class='div_panel' catchtap="{{func}}">
+      <text class="div_txt">{{txt}}</text>
+      <view class="div_icon">
+        <image src="/images/open.png" wx:if="{{isopen}}"></image>
+        <image src="/images/fold.png" wx:else></image>
+      </view>
+    </view>
+    </template>

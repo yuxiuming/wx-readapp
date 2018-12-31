@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/auth/auth",
+    "pages/homepage/homepage",
+    "pages/bookadd/bookadd",
+    "pages/bookdetail/bookdetail",
+    "pages/userbooks/userbooks",
+    "pages/about/about"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#BEEBEB",
+    "navigationBarTitleText": "记得读过",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#4D9EB3",
+    "list": [
+      {
+        "pagePath": "pages/homepage/homepage",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/userbooks/userbooks",
+        "text": "我的书库",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "信息",
+        "iconPath": "images/about.png",
+        "selectedIconPath": "images/about.png"
+      }
+    ]
+  }
+}

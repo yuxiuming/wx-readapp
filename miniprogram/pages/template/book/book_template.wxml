@@ -1,0 +1,26 @@
+<template name="bookTemplate">
+  <view class='book-container' catchtap='onShowBookDetail' data-book="{{book}}">
+    <view class='watermark' wx:if="{{book.readstatus}}">{{book.readstatus}}</view>
+
+    <view class="image_panel">
+      <image src="{{book.image}}" class="book-img" mode="scaleToFill"></image>
+    </view>
+    <view class='book-dec-container'>
+      <view class="book-title-panel">
+        <text class="book-title">{{book.title}}</text>
+        <view class="book-rating-panel">
+          <text class="book-rating-ave">{{book.rating_average}}</text>
+        </view>
+      </view>
+      <view class='book_info_panel'>
+        <text>副标题:{{book.origin_title}}</text>
+        <text>作者:{{book.author}}</text>
+        <text>译者:{{book.translator}}</text>
+        <text>{{book.publisher}} / {{book.pubdate}}</text>
+        <text>页数:{{book.pages}}</text>
+        <text>ISBN(13):{{book.isbn13}}</text>
+
+      </view>
+    </view>
+  </view>
+</template>

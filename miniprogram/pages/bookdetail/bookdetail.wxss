@@ -1,0 +1,279 @@
+@import "../template/bookinfo/bookinfo_template.wxss";
+@import "../template/tag/tag_template.wxss";
+@import "../template/note/note_template.wxss";
+@import "../template/div/div_template.wxss";
+.bd_container {
+  margin: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.book_info_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.bd_userinfo_edit_container {
+  margin-top: 35rpx;
+}
+
+.status_txt {
+  font-size: 35rpx;
+}
+
+.read_status_container {
+  margin-top: 20rpx;
+}
+
+.read_status_container label {
+  margin-right: 20rpx;
+}
+
+.edittag_tip {
+  margin-top: 35rpx;
+}
+
+.edittag_tip text {
+  font-size: 35rpx;
+}
+
+.editbook_tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.custom_tag {
+  color: red;
+  font-size: 35rpx;
+}
+
+.tagname_input_container {
+  margin-top: 20rpx;
+  border: solid 1px #beebeb;
+  border-radius: 15rpx;
+  padding: 10rpx;
+}
+
+.tagname_input_text {
+  font-size: 30rpx;
+}
+
+.bookadd_bnt {
+  margin-top: 50rpx;
+}
+
+.readStatus_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.tagname_input_container {
+  margin-right: 15rpx;
+}
+
+.tagname_input_container text {
+  font-size: 30rpx;
+}
+
+.bd_userinfo_show_container {
+  margin-top: 15rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.read_status_txt_2 {
+  color: red;
+  font-size: 40rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.bd_tags {
+  margin-top: 30rpx;
+}
+
+.tags_panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tag_item {
+  border: solid 1px #beebeb;
+  border-radius: 10rpx;
+  background-color: #beebeb;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  padding: 10rpx;
+  display: flex;
+}
+
+.tag_item text {
+  font-size: 35rpx;
+}
+
+.edit_icon_panel {
+  position: absolute;
+  top:0rpx;
+  right: 0rpx;
+  border: 1rpx #beebeb solid;
+  border-radius: 10rpx;
+  display: flex;
+  flex: row;
+  padding: 10rpx;
+  align-items: center;
+}
+
+.edit_icon_panel image {
+  height: 45rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
+}
+
+.edit_icon_panel text {
+  font-size: 45;
+  color: #1eebeb;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  border: 0;
+  background-color: #beebeb;
+}
+
+.division{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+.fix_txt{
+  color: #1eebeb;
+  font-size: 40rpx;
+  
+}
+
+.chg_txt{
+  background-color: #1eebeb;
+  width: 50rpx;
+  height: 50rpx;
+  margin-left:10rpx;
+  border-radius: 50rpx;
+position: relative;
+}
+.chg_txt text{
+  position: absolute;
+  top:-30rpx;
+  left: 5rpx;
+ font-size: 70rpx;
+ color: white;
+}
+
+
+.fold_panel {
+  margin-top: 10rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.booksumm_content {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  color: grey;
+}
+
+.bd_note_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.bd_note_page_panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bd_notes_show_panel {
+  display: flex;
+  flex-direction: row;
+}
+
+.bd_page_point {
+  width: 25rpx;
+  height: 25rpx;
+  background-color: white;
+  border: 15rpx #beebeb solid;
+  border-radius: 25rpx;
+  margin-right: 10rpx;
+}
+
+.bd-page-vertical {
+  width: 5rpx;
+  border: 1rpx #beebeb solid;
+  background-color: #beebeb;
+  margin-left: 23rpx;
+  margin-right: 20rpx;
+}
+
+.bd_pagenum_input {
+  margin-top: 10rpx;
+  border: 1rpx #beebeb solid;
+  border-radius: 10rpx;
+  height: 70rpx;
+  width: 97%;
+  padding: 10rpx;
+}
+
+.bd_notecnt_input {
+  margin-top: 10rpx;
+  border: 1rpx #beebeb solid;
+  border-radius: 10rpx;
+  height: 300rpx;
+  width: 97%;
+  padding: 10rpx;
+}
+
+.bd_bnts_panel {
+  display: flex;
+  flex-direction: row;
+}
+
+.bd_bnt {
+  margin-top: 20rpx;
+  width: 48%;
+}
+
+
+
+.bd_note_title {
+  font-size: 40rpx;
+  margin-top: 15rpx;
+}
+
+.bd_note_sym {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  border: 2rpx #beebeb solid;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  align-items: center;
+}
+
+.bd_note_sym image {
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 10rpx;
+}
+
+.bd_note_sym text {
+  font-size: 45;
+  color: #1eebeb;
+}

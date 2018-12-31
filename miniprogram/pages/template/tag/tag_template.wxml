@@ -1,0 +1,6 @@
+<template name="tagTemplate">
+          <view class='tag_item' data-tag="{{tag}}" catchtap='onTagTap'>
+            <text>{{tag.name}}</text>
+            <image src="/images/get.png" wx:if="{{tag.isShow}}"></image>
+          </view>
+</template>

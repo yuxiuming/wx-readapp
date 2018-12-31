@@ -1,0 +1,51 @@
+/* miniprogram/pages/bookdetail/bookdetail.wxss */
+@import "../tag/tag_template.wxss";
+.bd_container{
+  display: flex;
+  flex-direction: column;
+}
+.bd_title_container{
+  display: flex;
+  flex-direction: row;
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+}
+.bd_info_container{
+  display: flex;
+  flex-direction: row;
+  padding-top: 20rpx;
+}
+
+.bd_img{
+  height: 400rpx;
+  width: 300rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+.db_info{
+  display: flex;
+  flex-direction: column;
+}
+
+.db_info text{
+  font-size: 32rpx;
+}
+
+.db_user_info_container{
+  margin: 25rpx;
+}
+.read_status_container label{
+  margin-right: 20rpx;
+}
+
+.editbook_tags{
+  margin-top: 30rpx;
+}
+
+.editbook_tags{
+  display: flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+
+

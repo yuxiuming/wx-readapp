@@ -1,0 +1,19 @@
+<template name="urbookTemplate">
+  <view class='urbook-container' catchtap='onShowBookDetail' data-book="{{book}}">
+    <image src="{{book.image}}" class="book-img"></image>
+    <image src="/images/loveit.png" class="love-img" wx:if="{{book.islove}}"></image>
+    <view class='book-dec-container'>
+      <view class="book-title-panel">
+        <text class="book-title">{{book.title}}</text>
+        <view class="book-rating-panel">
+          <text class="book-rating-ave">{{book.rating_average}}</text>
+        </view>
+      </view>
+      <view class='book_info_panel'>
+      <text>副标题:{{book.subtitle}}</text>
+      <text>作者:{{book.author}}</text>
+      <text>{{book.publisher}} / {{book.pubdate}}</text>
+      </view>
+    </view>
+  </view>
+</template>

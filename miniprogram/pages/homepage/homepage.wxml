@@ -1,0 +1,34 @@
+<!--miniprogram/pages/homepage/homepage.wxml-->
+
+<import src="../template/book/book_template.wxml" />
+<view class='hp_container'>
+  <!--推荐书籍栏-->
+  <view class='hp_recommend_container'>
+    <view class='hp_tip_panel' >
+      <text class='hp_tip'>高分书籍推荐</text>
+      <text class="chg_txt" catchtap='onRefreshRecommend'>刷新</text>
+      
+    </view>
+
+    <swiper class="hp_recommend_swiper" indicator-dots="true" autoplay='true' duration='500' interval='5000' catchtap="onswiperTap">
+      <block wx:for="{{recombooks}}" wx:for-item="book">
+        <swiper-item>
+          <template is="bookTemplate" data="{{book}}" data-book="{{book}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--查找书籍栏-->
+  <view class='hp_search_container'>
+    <text class="hp_tip">记录阅读足迹</text>
+    <view class='hp_search_panel'>
+      <image src="/images/searchb3.png" class='hp_search_name' catchtap='onNameSearch'></image>
+      <image src="/images/scan3.png" class='hp_search_isbn' catchtap='onScanSearch'></image>
+    </view>
+  </view>
+  <!--出租书籍栏-->
+  <view class='hp_rentbook_container' catchtap='onrentBookTap'>
+    <text class="hp_tip">我想租书</text>
+    <image src='/images/rentbooks.png'></image>
+  </view>
+</view>
