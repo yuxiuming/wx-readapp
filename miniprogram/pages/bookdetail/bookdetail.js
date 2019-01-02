@@ -231,7 +231,7 @@ Page({
     var pageNotesArr = data.result;
     if (pageNotesArr.length > 0) {
       pageNotesArr.sort(function(a, b) {
-        return parseInt(a.pagenum) > parseInt(b.pagenum);
+        return parseInt(a.pagenum) < parseInt(b.pagenum);
       });
       this.setData({
         notetitle: "",
@@ -706,6 +706,8 @@ Page({
       return;
     }
     var booknote = null;
+    var nowTime = others.getZoneTime();
+    console.log("*****"+nowTime)
     //如果是新增读书小记
     if (null == this.data.currentnote) {
       booknote = {
@@ -713,8 +715,8 @@ Page({
         isbn13: this.data.editbook.isbn13,
         notecnt: event.detail.value.notecnt.trim(),
         pagenum: event.detail.value.pagenum,
-        createtime: new Date().getTime(),
-        modifytime: new Date().getTime()
+        createtime: nowTime,
+        modifytime: nowTime
       };
     } else {
       //修改读书小记的情况
@@ -722,7 +724,7 @@ Page({
       delete booknote._id;
       booknote.notecnt = event.detail.value.notecnt.trim();
       booknote.pagenum = event.detail.value.pagenum;
-      booknote.modifytime = new Date().getTime();
+      booknote.modifytime = nowTime;
     }
     this.setBookNote(false, booknote);
   },
@@ -735,7 +737,7 @@ Page({
   },
 
   setBookNoteCallBack: function(data) {
-    //console.log(data);
+    console.log(data);
     if ("OK" == data.result.result) {
       this.setData({
         currentnote: null

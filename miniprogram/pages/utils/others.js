@@ -60,11 +60,16 @@ function showMsg(cnt){
   });
 }
 
+function getZoneTime(){
+  var offset = new Date().getTimezoneOffset();
+  return ((new Date().getTime()) - offset*60*1000);
+}
 
 
 module.exports = {
   getNowMonth: getNowMonth,
   compareNowMonth: compareNowMonth,
   getDBBookItem: getDBBookItem,
-  showMsg: showMsg
+  showMsg: showMsg,
+  getZoneTime:getZoneTime
 }
