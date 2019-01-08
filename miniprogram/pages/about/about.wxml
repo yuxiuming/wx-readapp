@@ -1,3 +1,6 @@
 <!--miniprogram/pages/about/about.wxml-->
-<text>版本 beta 1.0</text>
+<view class='about'>
+<text>版本 beta 1.0.2</text>
+<text>增加：图片文字识别功能</text>
+</view>
 

@@ -38,7 +38,7 @@ Page({
       booksummary: "",
       booksummfold: bookSummFold
     });
-    
+
     this.loadUserXBook(userid);
 
     var bookImpressFold = {
@@ -67,14 +67,14 @@ Page({
     };
     this.setData({
       othernotesfold: otherNotesFold,
-      otherpagenotes:null
+      otherpagenotes: null
     });
     this.loadOtherBookNote(userid);
 
     this.loadUserBookLove(userid);
   },
 
-/**书本印象的收起和展开 */
+  /**书本印象的收起和展开 */
   onBookPressTap: function() {
     if (this.data.isshowtype || this.data.isedittype) {
       this.data.bookimpressfold.isopen = false;
@@ -129,28 +129,33 @@ Page({
 
   },
   /**加载用户是否喜欢这本书 */
-  loadUserBookLove:function(userid){
+  loadUserBookLove: function(userid) {
     clouldFuncHandler.callCloudFunc("getBookLove", {
-      userid: userid ,bookid:this.data.editbook.isbn13
+      userid: userid,
+      bookid: this.data.editbook.isbn13
     }, this.onLoadUserBookLoveCallBack);
   },
-  onLoadUserBookLoveCallBack:function(data){
+  onLoadUserBookLoveCallBack: function(data) {
     //console.log(data);
-    if(0==data.result.data.length){
-      this.data.editbook["loveit"]=false;
-    } else if(1 == data.result.data.length){
+    if (0 == data.result.data.length) {
+      this.data.editbook["loveit"] = false;
+    } else if (1 == data.result.data.length) {
       this.data.editbook["loveit"] = true;
     }
-    this.setData({ editbook: this.data.editbook});
+    this.setData({
+      editbook: this.data.editbook
+    });
   },
-  onLoveThisBookTap:function(event){
+  onLoveThisBookTap: function(event) {
     //console.log(event);
-    var isLove=event.currentTarget.dataset.islove;
+    var isLove = event.currentTarget.dataset.islove;
     clouldFuncHandler.callCloudFunc("setBookLove", {
-      userid: wx.getStorageSync("openid"), bookid: this.data.editbook.isbn13, loveit:isLove
+      userid: wx.getStorageSync("openid"),
+      bookid: this.data.editbook.isbn13,
+      loveit: isLove
     }, this.onSetBookLoveCallBack);
   },
-  onSetBookLoveCallBack:function(data){
+  onSetBookLoveCallBack: function(data) {
     //console.log(data);
     this.loadUserBookLove(wx.getStorageSync("openid"));
   },
@@ -246,7 +251,7 @@ Page({
   },
 
   loadOtherBookNote: function(userid) {
-    if (null == this.data.otherpagenotes || undefined == this.data.otherpagenotes){
+    if (null == this.data.otherpagenotes || undefined == this.data.otherpagenotes) {
       this.setData({
         othernotetitle: "正在加载读书小记..."
       });
@@ -644,7 +649,7 @@ Page({
   onGetBookDescTap: function(event) {
     console.log("------onGetBookDescTap----");
     if (!this.data.isBookSummShow) {
-      this.data.booksummfold.isopen=true;
+      this.data.booksummfold.isopen = true;
     } else {
       this.data.booksummfold.isopen = false;
     }
@@ -707,7 +712,7 @@ Page({
     }
     var booknote = null;
     var nowTime = others.getZoneTime();
-    console.log("*****"+nowTime)
+    console.log("*****" + nowTime)
     //如果是新增读书小记
     if (null == this.data.currentnote) {
       booknote = {
@@ -803,21 +808,106 @@ Page({
       }
     });
   },
-  onLikeNoteTap:function(event){
+  onLikeNoteTap: function(event) {
     //console.log(event);
-    var noteid=event.currentTarget.dataset.note._id;
-    var userid=wx.getStorageSync("openid");
+    var noteid = event.currentTarget.dataset.note._id;
+    var userid = wx.getStorageSync("openid");
     clouldFuncHandler.callCloudFunc("setNoteLike", {
       userid: userid,
       noteid: noteid
     }, this.onSetNoteLikeCallBack);
   },
-  onSetNoteLikeCallBack:function(data){
+  onSetNoteLikeCallBack: function(data) {
     //console.log(data);
-    if("OK"==data.result.result){
+    if ("OK" == data.result.result) {
       this.loadOtherBookNote(wx.getStorageSync("openid"));
     }
-    
+
+  },
+
+  onPhoto2StrTap: function(event) {
+    var fileid = "";
+    var that=this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        console.log(res);
+        var fsname = res.tempFilePaths[0];
+        fsname = fsname.substring(fsname.length - 20, fsname.length);
+        console.log(fsname);
+        //const tempFilePaths = res.tempFilePaths
+        wx.showLoading({
+          title: '正在处理...',
+        });
+        that.uploadPic(fsname, res.tempFilePaths[0],that)
+      }
+    });
+  },
+  uploadPic: function (fsname, fpath, that){
+    wx.cloud.uploadFile({
+      cloudPath: fsname,
+      filePath: fpath, // 文件路径
+      success: res => {
+        // get resource ID
+        console.log(res)
+        that.setData({ curFileID: res.fileID });
+        that.getFileUrl(res.fileID, that);
+        
+      },
+      fail: err => {
+        wx.hideLoading();
+        console.log(err);
+      }
+    });
+  },
+
+  getFileUrl: function (fileID,that){
+    wx.cloud.getTempFileURL({
+      fileList: [fileID],
+      success: res => {
+        console.log(res);
+        that.doTxtRec(res.fileList[0].tempFileURL,that);
+      },
+      fail: err => {
+        wx.hideLoading();
+        that.delPic(that);
+        console.log(err);
+        
+      }
+    });
+  },
+
+  doTxtRec: function(url,that) {
+    clouldFuncHandler.callCloudFunc("doCharsRec", {
+      url: url
+    }, function(data) {
+      wx.hideLoading();
+      var content = "";
+      console.log(data.result.words_result);
+      
+      for (let index in data.result.words_result){
+        content = content + data.result.words_result[index].words;
+      }
+      that.setData({ notecnt: content});
+      that.delPic(that);
+    });
+  },
+
+
+  delPic: function (that) {
+    var fid=this.data.curFileID;
+    wx.cloud.deleteFile({
+      fileList: [fid],
+      success: res => {
+        console.log(res);
+      },
+      fail: err => {
+        console.log(err);
+      }
+    })
   }
 
 })
