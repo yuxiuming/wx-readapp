@@ -1,2 +1,8 @@
 /* miniprogram/pages/about/about.wxss */
 
+.about{
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+
+}

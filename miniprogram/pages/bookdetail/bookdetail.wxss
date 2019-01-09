@@ -277,3 +277,12 @@ position: relative;
   font-size: 45;
   color: #1eebeb;
 }
+
+.bd_ckg{
+  margin-top: 15rpx;
+}
+
+.photo2strs{
+  margin-top: 15rpx;
+  color: blue
+}

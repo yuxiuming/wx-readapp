@@ -8,7 +8,7 @@
   </view>
   <!--内容简介的容器-->
   <view class='fold_panel'>
-     <template is="divTemplate" data="{{...booksummfold}}" />
+    <template is="divTemplate" data="{{...booksummfold}}" />
     <text class='booksumm_content' wx:if="{{isBookSummShow}}">{{booksummary}}</text>
     <view class='line' wx:if="{{isBookSummShow}}"></view>
   </view>
@@ -121,6 +121,15 @@
       <text>编辑读书小记:</text>
       <input class="bd_pagenum_input" name="pagenum" placeholder="当前要做小记的页数" type="number" value="{{pagenum}}" placeholder-class='bd_pagenum_input_text '></input>
       <textarea class="bd_notecnt_input" name="notecnt" value="{{notecnt}}" placeholder="读书小记写这里。最多300个字符哦。" maxlength="500" />
+
+      <view class='photo2strs' catchtap='onPhoto2StrTap'>智能输入:照片/图片文字识别</view>
+      <checkbox-group  class='bd_ckg' bindchange="checkboxChange" wx:if="{{false}}">
+        <label class="checkbox">
+          <checkbox value="{{isprivate}}"/>仅自己可以看
+        </label>
+      </checkbox-group>
+
+
       <view class='bd_bnts_panel'>
         <button class="bd_bnt" form-type="submit">保存读书记录</button>
         <button class="bd_bnt" catchtap='onEditNoteCancel'>取消</button>
@@ -152,5 +161,5 @@
       <view class='line'></view>
     </view>
   </view>
-  
+
 </view>
